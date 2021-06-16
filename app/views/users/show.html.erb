@@ -1,3 +1,15 @@
-<h1>User info</h1>
+<h4>User info</h4>
 <p>name</p>
 <p>intrduction</p>
+<br>
+
+<%= form_with model: @book, url: "book_path", local:true do |f| %>
+  <h4>New book</h4>
+  <p>Title</p>
+  <%= f.text_field :title %>
+  <p>Opinion</p>
+  <%= f.text_area :body %>
+  <%= f.submit "Create Book",class: "btn btn-success" %>
+<% end %>
+
+<h4>My Books</h4>
