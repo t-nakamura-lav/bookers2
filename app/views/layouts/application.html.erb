@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <!--↓font-awesomeを読み込むため-->
+  <script src="https://kit.fontawesome.com/*******.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-<!--↓font-awesomeを読み込むため-->
-<script src="https://kit.fontawesome.com/*******.js" crossorigin="anonymous"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -17,7 +16,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
         <div class="container">
           <a class="navbar-brand">
-            <span>Bookers</span>
+            <span><%= link_to 'Bookers', root_path,class: "nav-link text-light" %></span>
           </a>
          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,7 +31,7 @@
           <li><%= link_to 'Logout', destroy_user_session_path,   class: "fas fa-sign-out-alt nav-link text-light", method: :delete %></li>
             <% else %>
           <li><%= link_to 'Home', root_path,class: "fas fa-home nav-link text-light"  %></li>
-          <li><%= link_to 'about', class: "fas fa-link nav-link text-light" %></li>
+          <li><%= link_to 'about', homes_about_path,class: "fas fa-link nav-link text-light" %></li>
           <li><%= link_to 'sign up', new_user_registration_path, class: "fas fa-user-plus nav-link text-light" %></li>
           <li><%= link_to 'Login', new_user_session_path, class: "fas fa-sign-in-alt nav-link text-light" %></li>
             <% end %>
@@ -40,23 +39,12 @@
       </div>
       </div>
       </nav>
+            <%= action_name %>
+            <%= yield %>
 </header>
 
-<main>
-  <div class="btn-wrapper col-10 mx-auto">
-    <div class="row">
-        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-success btn-sm btn-block' %>
-    </div>
-
-    <div class="row">
-        <%= link_to "Log in", new_user_session_path, class: 'btn btn-info btn-sm btn-block mb-3' %>
-    </div>
-  </div>
-    <%= action_name %>
-    <%= yield %>
 </main>
-
-  <footer>
+ <footer>
     <div class="container mt-5">
   	  <div class="row">
       	<div class="mx-auto">

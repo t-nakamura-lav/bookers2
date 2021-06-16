@@ -1,0 +1,12 @@
+<h1>Books#index</h1>
+<p>Find me in app/views/books/index.html.erb</p>
+
+
+<%= form_with model: @book, url: "book_path", local:true do |f| %>
+  <h4>New book</h4>
+  <p>Title</p>
+  <%= f.text_field :title %>
+  <p>Opinion</p>
+  <%= f.text_area :body %>
+  <%= f.submit "Create Book",class: "btn btn-success" %>
+<% end %>
