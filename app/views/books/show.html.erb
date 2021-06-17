@@ -1,7 +1,60 @@
-<p> <strong>Title:</strong> <%= @book.title %> </p>
+<body>
+<main>
+ <div class="container px-5 px-sm-0">
+    <div class="row">
+      <div class="col-md-3">
+        <h2>User info</h2>
+        <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 
-<p> <strong>Body:</strong> <%= @book.body %> </p>
+      <table class="table">
+        <tbody>
+           <tr></tr>
+           <tr>
+             <th>name</th>
+             <th><%= @user.name %></th>
+           </tr>
+           <tr>
+             <th>intrduction</th>
+             <th><%= @user.introduction %></th>
+           </tr>
+        </tbody>
+     </table>
 
-<%= link_to "Edit", edit_book_path(@book) %>
+      <div class="row">
+        <%= link_to "プロフィール編集", edit_user_path(@user),class: 'btn btn-outline-secondary btn-block fas fa-user-cog' %>
+      </div>
 
-<%= link_to "Back", books_path %>
+        <%= form_with model: @book, local:true do |f| %>
+      <h2>New book</h2>
+          <p>Title</p>
+        <%= f.text_field :title %>
+
+          <p>Opinion</p>
+        <%= f.text_area :body %>
+        <%= f.submit "Create Book",class: "btn btn-success" %>
+        <% end %>
+      </div>
+
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table class="table table-hover-inverse">
+        <tbody>
+            <tr>
+              <td></td>
+              <td><%= @book.title %></td>
+
+              <td><%= @book.body %> </td>
+
+              <td><%= link_to "Edit", edit_book_path(@book) %></td>
+
+              <td><%= link_to "Destroy", post_image_path(@book), method: :delete %></td>
+            </tr>
+
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+
