@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   get 'homes/about'
   devise_for :users
   post 'books' => 'books#create'
-  resources :post_images, only: [:new, :create, :index, :show, :destroy
-  ]
+  resources :post_images
   resources :books
   resources :users
 
