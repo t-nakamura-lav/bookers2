@@ -1,5 +1,12 @@
 <body>
-<main>
+  <% if @book.errors.any? %>
+    <ul class="error_messages">
+      <h3><%= @book.errors.count %>errors prohibited this user from being saved:</h3>
+          <% @book.errors.full_messages.each do |message| %>
+          <%= message %>
+          <% end %></ul>
+  <% end %>
+
   <%= render 'users/list', user: @user, book: @book %>
         <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
@@ -28,8 +35,6 @@
           <% end %>
           </tbody>
           </table>
-
-      </div>
     </div>
   </div>
 </main>

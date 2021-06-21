@@ -1,8 +1,17 @@
-<div class="container ">
+  <div class="container ">
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <%= form_with model: @book, local:true do |f| %>
         <h1>Editing Book</h1>
+
+        <% if @book.errors.any? %>
+        <ul class="error_messages">
+        <h3><%= @book.errors.count %>errors prohibited this user from being saved:</h3>
+        <% @book.errors.full_messages.each do |message| %>
+        <%= message %>
+        <% end %></ul>
+        <% end %>
+
         <p>Title</p>
         <%= f.text_field :title %>
 
@@ -14,7 +23,7 @@
         <p><%= link_to "show", book_path(@book) %>
            <%= link_to "Back", books_path(@book.user) %>
         </p>
-          <% end %>
+           <% end %>
     </div>
   </div>
 </div>
