@@ -1,30 +1,33 @@
-<body>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-3">
+     <%= render 'users/list', user: @user, book: @book_new %>
+    </div>
 
-<main>
-<%= render 'users/list', user: @user, book: @book %>
-      <div class="col-md-8 offset-md-1">
-        <h2>Book detail</h2>
-        <table class="table table-hover-inverse">
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table table-hover-inverse">
         <tbody>
-            <tr>
-              <td>
-<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%>
-                  <br><%= link_to @user.name, user_path(@user) %></td>
-              <td><%= link_to @book.title, book_path(@book) %></td>
+          <tr>
+            <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg"%><br>
+                <%= link_to @user.name, user_path(@user) %>
+            </td>
+            <td><%= link_to @book.title, book_path(@book) %>
+            </td>
 
-              <td><%= @book.body %> </td>
+            <td><%= @book.body %>
+            </td>
 
-                  <% if @user == current_user %>
-              <td><%= link_to "Edit", edit_book_path(@book),class: "btn btn-sm btn-success" %></td>
+                <% if @user == current_user %>
+            <td><%= link_to "Edit", edit_book_path(@book),class: "btn btn-sm btn-success" %>
+            </td>
 
-              <td><%= link_to "Destroy", book_path(@book), method: :delete,class: "btn btn-sm btn-danger"  %></td>
-            </tr> <% end %>
-
+            <td><%= link_to "Destroy", book_path(@book), method: :delete,class: "btn btn-sm btn-danger"  %>
+            </td>
+          </tr> <% end %>
         </tbody>
-        </table>
-      </div>
+      </table>
     </div>
   </div>
-</main>
-</body>
+</div>
 
